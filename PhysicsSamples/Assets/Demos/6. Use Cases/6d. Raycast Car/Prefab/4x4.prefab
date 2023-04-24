@@ -2187,7 +2187,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ConnectedBody: {fileID: 3054253960427868525}
   EnableCollision: 0
-  RaiseImpulseEvents: 0
   MaxImpulse:
     x: Infinity
     y: Infinity
@@ -2422,6 +2421,7 @@ GameObject:
   - component: {fileID: 3054253960427868527}
   - component: {fileID: 3054253960427868526}
   - component: {fileID: 3054253960427868525}
+  - component: {fileID: 4014759311677847140}
   m_Layer: 0
   m_Name: 4x4
   m_TagString: Untagged
@@ -2558,6 +2558,20 @@ MonoBehaviour:
     Tag05: 0
     Tag06: 0
     Tag07: 0
+--- !u!114 &4014759311677847140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3054253960427868515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 066aeef58cb88c34e92c67a58c6328c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxFuel: 100
+  FuelAmount: 0
 --- !u!1001 &2838780120158161631
 PrefabInstance:
   m_ObjectHideFlags: 0

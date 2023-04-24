@@ -906,7 +906,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ConnectedBody: {fileID: 3718338394545543432}
   EnableCollision: 0
-  RaiseImpulseEvents: 0
   MaxImpulse:
     x: Infinity
     y: Infinity
@@ -1235,7 +1234,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ConnectedBody: {fileID: 3718338394545543432}
   EnableCollision: 0
-  RaiseImpulseEvents: 0
   MaxImpulse:
     x: Infinity
     y: Infinity
@@ -2114,6 +2112,7 @@ GameObject:
   - component: {fileID: 3718338394545543438}
   - component: {fileID: 3718338394545543439}
   - component: {fileID: 3718338394545543432}
+  - component: {fileID: 4195128550457896509}
   m_Layer: 0
   m_Name: Military Truck
   m_TagString: Untagged
@@ -2256,6 +2255,20 @@ MonoBehaviour:
     Tag05: 0
     Tag06: 0
     Tag07: 0
+--- !u!114 &4195128550457896509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3718338394545543435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 066aeef58cb88c34e92c67a58c6328c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxFuel: 100
+  FuelAmount: 0
 --- !u!1 &3718338394614137309
 GameObject:
   m_ObjectHideFlags: 0
@@ -3625,7 +3638,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ConnectedBody: {fileID: 3718338394545543432}
   EnableCollision: 0
-  RaiseImpulseEvents: 0
   MaxImpulse:
     x: Infinity
     y: Infinity
@@ -4038,7 +4050,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ConnectedBody: {fileID: 3718338394545543432}
   EnableCollision: 0
-  RaiseImpulseEvents: 0
   MaxImpulse:
     x: Infinity
     y: Infinity
@@ -4367,7 +4378,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ConnectedBody: {fileID: 3718338394545543432}
   EnableCollision: 0
-  RaiseImpulseEvents: 0
   MaxImpulse:
     x: Infinity
     y: Infinity
@@ -5008,7 +5018,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ConnectedBody: {fileID: 3718338394545543432}
   EnableCollision: 0
-  RaiseImpulseEvents: 0
   MaxImpulse:
     x: Infinity
     y: Infinity
@@ -5312,7 +5321,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ConnectedBody: {fileID: 3718338394545543432}
   EnableCollision: 0
-  RaiseImpulseEvents: 0
   MaxImpulse:
     x: Infinity
     y: Infinity

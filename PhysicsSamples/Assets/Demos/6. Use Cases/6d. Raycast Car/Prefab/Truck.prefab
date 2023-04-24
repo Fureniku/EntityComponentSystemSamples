@@ -913,7 +913,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ConnectedBody: {fileID: 501380635424137061}
   EnableCollision: 0
-  RaiseImpulseEvents: 0
   MaxImpulse:
     x: Infinity
     y: Infinity
@@ -934,19 +933,19 @@ MonoBehaviour:
   TwistAxisLocal:
     x: -0.00000025704523
     y: 1
-    z: 5.1159077e-13
+    z: 5.684342e-13
   TwistAxisInConnectedEntity:
     x: -0.00000025704523
     y: 1
-    z: 5.684342e-13
+    z: 6.252776e-13
   PerpendicularAxisLocal:
     x: -1
     y: 0
-    z: 0.000001013279
+    z: 0.0000011324883
   PerpendicularAxisInConnectedEntity:
     x: -0.99999994
     y: 0
-    z: 0.0000011324883
+    z: 0.0000012516975
   MaxConeAngle: 30
   MinPerpendicularAngle: -10
   MaxPerpendicularAngle: 10
@@ -3490,6 +3489,7 @@ GameObject:
   - component: {fileID: 501380635424137060}
   - component: {fileID: 501380635424137082}
   - component: {fileID: 501380635424137061}
+  - component: {fileID: 7976700939965384944}
   m_Layer: 0
   m_Name: Cab
   m_TagString: Untagged
@@ -3625,6 +3625,20 @@ MonoBehaviour:
     Tag05: 0
     Tag06: 0
     Tag07: 0
+--- !u!114 &7976700939965384944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2073217997650231723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 066aeef58cb88c34e92c67a58c6328c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxFuel: 100
+  FuelAmount: 0
 --- !u!1 &7057765291315330622
 GameObject:
   m_ObjectHideFlags: 0
