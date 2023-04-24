@@ -1,10 +1,9 @@
 using Demos;
 using Unity.Burst;
 using Unity.Entities;
-using Unity.Physics.Systems;
 using UnityEngine;
 
-struct FuelComponent : IComponentData {
+struct VehicleFuelComponent : IComponentData {
     public float MaxFuel;
     public float FuelAmount;
     public float FuelDrainRate;
@@ -24,7 +23,7 @@ class VehicleFuel : MonoBehaviour {
             Debug.Log("Baking vehicle fuel component");
             var entity = GetEntity(TransformUsageFlags.Dynamic);
 
-            AddComponent(entity, new FuelComponent {
+            AddComponent(entity, new VehicleFuelComponent {
                 MaxFuel = fuelComp.MaxFuel,
                 FuelAmount = fuelComp.FuelAmount,
                 FuelDrainRate = fuelComp.FuelDrainRate
@@ -42,16 +41,13 @@ public partial class VehicleFuelSystem : SystemBase {
         Dependency = Entities
             .WithName("PrepareVehiclesJob")
             .WithBurst()
-            .ForEach((
-                Entity entity, ref FuelComponent vehicleFuel, ref VehicleSpeed vehicleSpeed) => {
-
+            .ForEach((Entity entity, ref VehicleFuelComponent vehicleFuel, ref VehicleSpeed vehicleSpeed) => {
                 if (vehicleSpeed.DriveEngaged == 1) {
                     if (vehicleFuel.FuelAmount > 0f) {
                         vehicleFuel.FuelAmount -= vehicleFuel.FuelDrainRate;
-                        Debug.Log($"[entity: {entity.Index}] is driving so I've drained some fuel. Remaining: {vehicleFuel.FuelAmount}");
                     } else {
-                        Debug.Log($"[entity: {entity.Index}] There's no fuel left. Stop driving?");
                         vehicleSpeed.TopSpeed = 0;
+                        vehicleFuel.FuelAmount = 0;
                     }
                 }
             })
