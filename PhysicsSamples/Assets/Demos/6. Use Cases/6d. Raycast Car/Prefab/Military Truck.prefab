@@ -2269,6 +2269,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxFuel: 100
   FuelAmount: 0
+  FuelDrainRate: 0.03
 --- !u!1 &3718338394614137309
 GameObject:
   m_ObjectHideFlags: 0

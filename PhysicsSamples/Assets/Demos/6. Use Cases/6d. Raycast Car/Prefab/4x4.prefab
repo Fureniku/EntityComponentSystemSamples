@@ -2572,6 +2572,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxFuel: 100
   FuelAmount: 0
+  FuelDrainRate: 0.01
 --- !u!1001 &2838780120158161631
 PrefabInstance:
   m_ObjectHideFlags: 0

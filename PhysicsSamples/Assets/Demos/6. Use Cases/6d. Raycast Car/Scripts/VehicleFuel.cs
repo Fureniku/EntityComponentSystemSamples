@@ -5,8 +5,9 @@ using Unity.Physics.Systems;
 using UnityEngine;
 
 struct FuelComponent : IComponentData {
-    public float FuelAmount;
     public float MaxFuel;
+    public float FuelAmount;
+    public float FuelDrainRate;
 }
 
 class VehicleFuel : MonoBehaviour {
@@ -14,6 +15,7 @@ class VehicleFuel : MonoBehaviour {
     [Header("Fuel System")]
     public float MaxFuel;
     public float FuelAmount;
+    public float FuelDrainRate;
 
     class FuelBaker : Baker<VehicleFuel> {
 
@@ -23,8 +25,9 @@ class VehicleFuel : MonoBehaviour {
             var entity = GetEntity(TransformUsageFlags.Dynamic);
 
             AddComponent(entity, new FuelComponent {
+                MaxFuel = fuelComp.MaxFuel,
                 FuelAmount = fuelComp.FuelAmount,
-                MaxFuel = fuelComp.MaxFuel
+                FuelDrainRate = fuelComp.FuelDrainRate
             });
         }
     }
@@ -36,17 +39,21 @@ public partial class VehicleFuelSystem : SystemBase {
 
     [BurstCompile]
     protected override void OnUpdate() {
-        Debug.Log("Vehicle fuel system updating!");
-
         Dependency = Entities
             .WithName("PrepareVehiclesJob")
             .WithBurst()
             .ForEach((
-                Entity entity, ref FuelComponent vehicleFuel) => {
-                vehicleFuel.FuelAmount -= 0.1f;
-                //Debug.Log("Fuel: " + vehicleFuel.FuelAmount);
+                Entity entity, ref FuelComponent vehicleFuel, ref VehicleSpeed vehicleSpeed) => {
 
-
+                if (vehicleSpeed.DriveEngaged == 1) {
+                    if (vehicleFuel.FuelAmount > 0f) {
+                        vehicleFuel.FuelAmount -= vehicleFuel.FuelDrainRate;
+                        Debug.Log($"[entity: {entity.Index}] is driving so I've drained some fuel. Remaining: {vehicleFuel.FuelAmount}");
+                    } else {
+                        Debug.Log($"[entity: {entity.Index}] There's no fuel left. Stop driving?");
+                        vehicleSpeed.TopSpeed = 0;
+                    }
+                }
             })
             .Schedule(Dependency);
 
