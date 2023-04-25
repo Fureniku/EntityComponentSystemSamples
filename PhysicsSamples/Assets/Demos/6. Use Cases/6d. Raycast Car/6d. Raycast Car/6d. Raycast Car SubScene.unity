@@ -1333,8 +1333,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Prefab: {fileID: 3405287552253979211, guid: 17513334b67faa24ea45eac635b4f0e7, type: 3}
-  SpawnRate: 2
+  SpawnRate: 5
   FuelAmount: 50
+  MaxAmount: 10
 --- !u!4 &2123603636
 Transform:
   m_ObjectHideFlags: 0
