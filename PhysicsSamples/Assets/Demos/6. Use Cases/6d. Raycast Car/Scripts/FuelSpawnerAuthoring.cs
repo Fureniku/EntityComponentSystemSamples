@@ -20,10 +20,5 @@ class FuelSpawnerBaker : Baker<FuelSpawnerAuthoring> {
             MaxAmount = authoring.MaxAmount,
             SpawnRate = authoring.SpawnRate
         });
-
-        AddComponent(entity, new FuelCanister {
-            FuelAmount = authoring.FuelAmount
-        });
-
     }
 }

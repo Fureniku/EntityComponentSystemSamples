@@ -20,7 +20,6 @@ class VehicleFuel : MonoBehaviour {
 
         public override void Bake(VehicleFuel fuelComp) {
             fuelComp.FuelAmount = fuelComp.MaxFuel; //Fuel tank will always start full.
-            Debug.Log("Baking vehicle fuel component");
             var entity = GetEntity(TransformUsageFlags.Dynamic);
 
             AddComponent(entity, new VehicleFuelComponent {
@@ -39,15 +38,18 @@ public partial class VehicleFuelSystem : SystemBase {
     [BurstCompile]
     protected override void OnUpdate() {
         Dependency = Entities
-            .WithName("PrepareVehiclesJob")
+            .WithName("ConsumeFuelJob")
             .WithBurst()
-            .ForEach((Entity entity, ref VehicleFuelComponent vehicleFuel, ref VehicleSpeed vehicleSpeed) => {
+            .ForEach((ref VehicleFuelComponent vehicleFuel, ref VehicleSpeed vehicleSpeed) => {
+                //If the vehicle is being actively driven, consume fuel.
+                //Doesn't consume fuel if the vehicle is just rolling.
+                //If there's no fuel left, prevent the vehicle from accelerating anymore - it can still roll and steer.
                 if (vehicleSpeed.DriveEngaged == 1) {
                     if (vehicleFuel.FuelAmount > 0f) {
                         vehicleFuel.FuelAmount -= vehicleFuel.FuelDrainRate;
                     } else {
                         vehicleSpeed.TopSpeed = 0;
-                        vehicleFuel.FuelAmount = 0;
+                        vehicleFuel.FuelAmount = 0; //Ensuring it doesn't drop below 0
                     }
                 }
             })
